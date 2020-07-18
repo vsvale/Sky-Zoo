@@ -1,0 +1,27 @@
+https://medium.com/ibmdeveloperbr/montando-um-classificador-de-imagem-na-ibm-cloud-8197e73c533f
+1. Criar um dataset de exemplos para treinamento
+1.1 Download Chrome driver (https://chromedriver.chromium.org/downloads)
+1.2 Descompactar o chromedriver.exe para C:\Software
+1.3 Download e descompacte https://github.com/ultralytics/google-images-download
+1.4 Acesse google-images-download via terminal
+1.5 pip install -U -r requirements.txt
+1.6 pip install tqdm
+1.7 python bing_scraper.py --search "Lion" --limit 250 --download --chromedriver "C:\Software\chromedriver.exe"
+1.8 python bing_scraper.py --search "Elephant" --limit 250 --download --chromedriver "C:\Software\chromedriver.exe"
+1.9 python bing_scraper.py --search "Giraffe" --limit 250 --download --chromedriver "C:\Software\chromedriver.exe"
+1.10 zip como DATASET.zip
+2. Criar projeto no IBM Cloud
+2.1Instanciar WatsonMachoneLearning 
+2.2 Acessar Credenciais de serviço -> Nova credencial
+2.3 Copiar conteudo da credencial
+
+2.4 Get started WatsonStudio
+2.5 Crie um novo projeto
+2.6 Inclua ao projeto um notebook (Bloco de notas) a partir da URL https://raw.githubusercontent.com/JoaoPedroPP/Sky-Zoo/master/model-jupyter/skyzoo.ipynb
+3 Rodando o classificador
+3.1 Rode cada comando até Download do Dataset(imagens)
+3.2 clique em 0100 e faça upload do DATASET.zip
+3.3 Inserir as credenciais
+3.4 Em watson Machine Learning Credentias cole o conteudo do item 2.3
+3.5 Em model Deployment altere para client.repository.ModelMetaNames.FRAMEWORK_VERSION : '1.15'
+3.6 Altere a image = Kimage.load_img("./DATASET/Lion/99.Rubi-edited.jpg") par auma imagem presente no DATASET no Watson
